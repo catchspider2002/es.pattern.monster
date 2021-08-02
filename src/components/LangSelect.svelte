@@ -12,6 +12,7 @@
     { id: "fr", name: "Français", link: "https://fr.pattern.monster" },
     { id: "it", name: "Italiano", link: "https://it.pattern.monster" },
     { id: "pl", name: "Polski", link: "https://pl.pattern.monster" },
+    { id: "pt", name: "Português", link: "https://pt.pattern.monster" },
     { id: "ro", name: "Română", link: "https://ro.pattern.monster" },
     { id: "tr", name: "Türkçe", link: "https://tr.pattern.monster" },
     { id: "ar", name: "العربية", link: "https://ar.pattern.monster" },
@@ -77,7 +78,7 @@
       <polyline points="6 9 12 15 18 9" />
     </svg>
   </button>
-  <ul class="menuItems">
+  <ul class="menuItems p-0">
     {#each languageList as lang}
       {#if lang.name === languageName}
         <a href={lang.link}><li class="px-4 py-3 selectedLang">{lang.name}</li></a>
@@ -152,7 +153,7 @@
     --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --tw-ring-offset-shadow: 0 0 #0000;
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-    padding: 0;
+    /* padding: 0; */
   }
   .menuItems a {
     text-decoration: none;
