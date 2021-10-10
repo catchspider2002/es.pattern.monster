@@ -28,7 +28,6 @@
 
   let { title, url, keywords, desc, image, versions } = Constants.pageDetails(page);
   data.sort((a, b) => strings[a.item_id].localeCompare(strings[b.item_id]));
-  // data.sort((a, b) => a.creation_date.localeCompare(b.creation_date));
 
   let selection = data[0].category_id;
 
@@ -43,7 +42,6 @@
     };
   });
   const uniqCategories = [...new Map(categories.map((item) => [item["category_id"], item])).values()];
-  // uniqCategories.sort((a, b) => strings[a.item_id].localeCompare(strings[b.item_id]));
 
   $: selectedUnique = uniqCategories.filter((category) => category.category_id === selection);
 </script>
@@ -78,17 +76,17 @@
   <h1 class="text-center mt-12 p-2 mb-2 pb-6 font-semibold text-4xl uppercase">{strings[page]}</h1>
 
   <div class="container mx-auto">
-    <div class="range2Controls mt-8">
-      <div class="radio-toolbar">
-        {#each uniqCategories as cat}
-          <input type="radio" id={cat.category_id} name="bg" value={cat.category_id} bind:group={selection} />
-          <label class="disable-select" for={cat.category_id}>{strings[cat.item_id]}</label>
-        {/each}
-      </div>
+    <!-- <div class="range2Controls mt-8"> -->
+    <div class="radio-toolbar">
+      {#each uniqCategories as cat}
+        <input type="radio" id={cat.category_id} name="bg" value={cat.category_id} bind:group={selection} />
+        <label class="disable-select" for={cat.category_id}>{strings[cat.item_id]}</label>
+      {/each}
     </div>
+    <!-- </div> -->
   </div>
   <div class="container mx-auto gray-text p-4 pt-12 pb-4 title">
-    <h2 class="inline-block font-semibold">{strings[selectedUnique[0].item_id]}</h2>
+    <h2 class="inline-block font-semibold secondary-text-color">{strings[selectedUnique[0].item_id]}</h2>
     <h3 class="inline-block font-normal">
       &nbsp;({selectedUnique[0].from_cost ? "From " : ""}
       {selectedUnique[0].cost})
@@ -143,12 +141,12 @@
   .radio-toolbar {
     box-sizing: border-box;
     width: 100%;
-    /* max-width: 1536px; */
+    margin: -0.5rem;
     margin-left: auto;
     margin-right: auto;
     display: grid;
     grid-template-columns: repeat(2, minmax(0px, 1fr));
-    gap: 1rem;
+    /* gap: 1rem; */
     padding: 1rem;
   }
   img,
@@ -222,6 +220,7 @@
     gap: 0.25em;
     grid-auto-flow: column;
     padding: 0.35rem 0.6rem;
+    margin: 0.5rem;
     place-items: center;
     font-size: 1rem;
     background-color: var(--gray-bg);
@@ -269,7 +268,6 @@
     position: relative;
     display: block;
     width: 100%;
-    /* h-64 */
     overflow: hidden;
     border-radius: var(--border-radius);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -279,21 +277,6 @@
     font-size: 0.9em;
   }
   h3 {
-    color: rgba(var(--blockquote-color), 0.7);
-  }
-  .shopFeatures {
-    padding-inline-start: 1.5em;
-  }
-  :global(.shopFeatures li) {
-    list-style: none;
-    position: relative;
-    padding: 1px 0 9px 25px;
-  }
-
-  :global(.shopFeatures li::before) {
-    content: "-";
-    position: absolute;
-    top: 0;
-    left: 0;
+    color: rgba(var(--blockquote-color), 0.8);
   }
 </style>
